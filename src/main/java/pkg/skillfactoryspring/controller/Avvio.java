@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pkg.skillfactoryspring.SkillFactorySpringApplication;
 import pkg.skillfactoryspring.database.RepoAccount;
 import pkg.skillfactoryspring.model.Account;
 
@@ -29,6 +30,7 @@ public class Avvio {
     @PostMapping("/upsert")
     public String upsert(Account account){
         repoAccount.save(account);
+        SkillFactorySpringApplication.restart();
         return "home";
     }
 
@@ -50,5 +52,11 @@ public class Avvio {
         Account account = repoAccount.findById(id);
         model.addAttribute("account", account);
         return "formEdit";
+    }
+
+    @GetMapping("/myLogout")
+    public String myLogout() {
+        SkillFactorySpringApplication.restart();
+        return "/home";
     }
 }

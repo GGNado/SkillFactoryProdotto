@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmIns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:if="${param.error}">
+  <b style="color: red;">Username e password non validi!</b>
+</div>
+<div th:if="${param.logout}">
+  <b style="color: blue;">Esegui il login!</b>
+</div>
+<form th:action="@{/login}" method="post">
+<label>Username:</label><br>
+<input type="text" name="username"/>
+<br><br>
+<label>Password:</label><br>
+<input type="password" name="password" />
+<br><br>
+<input type="submit" value="Sign In"/>
+</form>
+</body>
+</html>
