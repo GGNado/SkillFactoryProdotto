@@ -2,32 +2,33 @@
 
 ## Panoramica
 
-Questo progetto implementa un sistema di gestione prodotti utilizzando Java con il framework Spring. L'applicazione fornisce , la modifica dei dati della tabella , l'eleminazione e l'aggiunta .
+Questo progetto implementa un sistema di gestione prodotti utilizzando Java con il framework Spring. L'applicazione fornisce la modifica di dati, l'eleminazione e l'aggiunta.
 
+---
 ## Dipendenze usate
-- [thymeleaf](https://www.thymeleaf.org/)
-- [Spring data JPA](https://spring.io/projects/spring-data-jpa)
-- [Spring data JDBC](https://spring.io/projects/spring-data-jdbc)
-- [MySQL DRIVER](https://spring.io/guides/gs/accessing-data-mysql)
-- [Spring Web](https://spring.io/projects/spring-ws)
-- [Lombok](https://projectlombok.org/)
-- [Spring Security](https://spring.io/projects/spring-security)
-
+- [Thymeleaf](https://www.thymeleaf.org/): è un template engine che implementa logica nei file .HTML con i prefissi **_TH:_** (Occhio al prefisso _**SEC:**_ per la sicurezza)
+- [Spring data JPA](https://spring.io/projects/spring-data-jpa) & [Spring data JDBC](https://spring.io/projects/spring-data-jdbc): usato per ORM, JPA ci offre una libreria di annotazione per fare il mapping delle classi model e aiuta Hibernate per fare il DDL; JDBC permette ad Hibernate per fare DML e DQL
+- [MySQL DRIVER](https://spring.io/guides/gs/accessing-data-mysql): DBMS che abbiamo deciso di usare per il nostro scopo didattico;
+- [Spring Web](https://spring.io/projects/spring-ws): usato per Tomcat Embedded, mi permette di esportare il progetto web come .JAR (invece che .WAR) così da poter avviare l'applicazione semplicemente senza dover avere un server web;
+- [Lombok](https://projectlombok.org/): rende Setter/Getter, Overload Costruttori, Override metodi di default. (Metodi garantiti, non li vediamo ma ci sono);
+- [Spring Security](https://spring.io/projects/spring-security): gestire l'autenticazione degli utenti attraverso un filterChain il quale definisce quali pagine poter accedere senza autorizzazione e sulle restanti effettua uno sbarramento automatico facendo un indirizzamento alla pagina di Login per gli accessi non autorizzati.
+---
 ## Struttura del Progetto
+![](https://i.ibb.co/z7D0wzB/Whats-App-Image-2024-04-11-at-14-58-31.jpg)
 
 Il progetto è suddiviso nei seguenti package:
-![prova](https://i.ibb.co/z7D0wzB/Whats-App-Image-2024-04-11-at-14-58-31.jpg)
 - package config: contiene tutte le classi con l'annotazione ```@Configuration```, annotazione che serve a Spring per identificare le classi come configuratore, le quali ci permettono di avere delle configurazioni, come ad esempio controlli di login, controlli sql, ect... che vengono eseguiti ad  ogni avvio della all'applicazione.
 - package controller: contiene tutte le classi con annotazione ```@Controller```, annotazione che serve a Spring per identificare le classi come controller di rotte le quali ci permettono di decidere cosa fare sotto determinati API.
 - package database: contiene tutte le interfaccie con l'annotazione ```@Repository```, annotazione che serve a Spring per identificare le interfaccie come repository  le quali ci permettono di gestire tutte le operazioni CRUD. Estendono l'interfaccia JPARepository che pernde come argomento l'entita il tipo del ID.
 - package model: contiene tutte le classi con annotazione ```@Entity```, annotazione che serve a Spring per identificare le classi come entita le quali ci permettono di rappresentare i nostri oggetti.
 
+---
 ## Annotazioni usate
--   ```@Configuration```: Indica che una classe come configuratore
+-   ```@Configuration```: Indica una classe come configuratore
 
 - ```@Autowired```: Springboot crea un oggetto di classe anonima che risulta figlia dell'interfaccia in cui viene utilizzata iniettando l'oggetto di tipo account, prodotto etc.
 
-- ```@Bean```: Indica che un metodo che viene avviato prima di tutti.
+- ```@Bean```: Indica un metodo che viene avviato prima di tutti.
 
 - ```@EnableWebSecurity```: Abilita la configurazione di Spring Security per l'applicazione Web.
 
@@ -57,7 +58,7 @@ Il progetto è suddiviso nei seguenti package:
 
 - ```@Column```: Specifica il mapping tra il campo di un'entità e la colonna corrispondente nel database.
 
-
+---
 ## API REST
 
 L' applicazione risponde alle seguenti API REST :
@@ -72,7 +73,7 @@ L' applicazione risponde alle seguenti API REST :
 - *avvio/deleteAccounts*: Elimina gli utenti.
 - *avvio/EditAccounts*: Modifica gli utenti.
 
-
+---
 ## Configurazione
 ### Database
 
@@ -139,6 +140,8 @@ public class MvcConfig implements WebMvcConfigurer {
 	}
 }
 ~~~
+
+---
 ## Esempio di Codice
 
 Classe Prodotto:
@@ -208,6 +211,8 @@ public class ProdottiRouter {
     }
 }
 ```
+
+---
 ## Anteprima applicazione
 ### Login
 ![](https://i.ibb.co/3B3LmBv/Screenshot-2024-04-11-alle-15-49-18.png)
@@ -215,6 +220,8 @@ public class ProdottiRouter {
 ![](https://i.ibb.co/Mk0DY4s/Screenshot-2024-04-11-alle-15-47-36.png)
 ### Lista Prodotti
 ![](https://i.ibb.co/BgNrym0/Screenshot-2024-04-11-alle-15-50-44.png)
+
+---
 ## Link Utili
 
 - [Codice](https://github.com/GGNado/SkillFactoryProdotto/tree/main)

@@ -12,6 +12,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import pkg.skillfactoryspring.database.RepoAccount;
 import pkg.skillfactoryspring.model.Account;
+import pkg.skillfactoryspring.utility.Crittografia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,9 @@ import java.util.List;
 public class WebSecurityConfig {
     @Autowired
     RepoAccount ra;
+
+    @Autowired
+    Crittografia cripto;
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -46,9 +50,10 @@ public class WebSecurityConfig {
             //autorizzarli all'accesso
             UserDetails user = User.withDefaultPasswordEncoder()
                     .username(u.getUsername())
-                    .password(u.getPassword())
+                    .password(cripto.decrypt(u.getPassword()))
                     .build();
             usersAuth.add(user);
+
         }
 
         return new InMemoryUserDetailsManager(usersAuth);

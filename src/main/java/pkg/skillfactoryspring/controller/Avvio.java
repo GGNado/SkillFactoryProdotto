@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pkg.skillfactoryspring.SkillFactorySpringApplication;
 import pkg.skillfactoryspring.database.RepoAccount;
 import pkg.skillfactoryspring.model.Account;
+import pkg.skillfactoryspring.utility.Crittografia;
 
 import java.util.List;
 
@@ -19,6 +20,9 @@ public class Avvio {
     @Autowired
     RepoAccount repoAccount;
 
+    @Autowired
+    Crittografia cripto;
+
     @PostMapping("/takeValues")
     public String takeValues(Account account){
         System.out.println(account.getUsername());
@@ -29,6 +33,7 @@ public class Avvio {
 
     @PostMapping("/upsert")
     public String upsert(Account account){
+        account.setPassword(cripto.encrypt(account.getPassword()));
         repoAccount.save(account);
         SkillFactorySpringApplication.restart();
         return "home";

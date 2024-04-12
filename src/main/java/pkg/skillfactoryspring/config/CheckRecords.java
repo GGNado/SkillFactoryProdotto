@@ -5,11 +5,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import pkg.skillfactoryspring.database.RepoAccount;
 import pkg.skillfactoryspring.model.Account;
+import pkg.skillfactoryspring.utility.Crittografia;
 
 @Configuration
 public class CheckRecords {
     @Autowired
     RepoAccount repoAccount;
+    @Autowired
+    Crittografia cripto;
 
     @Bean //Metodo che quando si avvia il programma, questo metodo viene eseguito per primo
     String getDefaultUser() {
@@ -17,7 +20,7 @@ public class CheckRecords {
         if (repoAccount.findAll().isEmpty()){
             Account account = new Account();
             account.setUsername("root");
-            account.setPassword("root");
+            account.setPassword(cripto.encrypt("root"));
             System.out.println("Aggiungo account di default...");
             repoAccount.save(account);
         } else {

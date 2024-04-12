@@ -1,9 +1,11 @@
 package pkg.skillfactoryspring;
 
+import org.jasypt.util.text.BasicTextEncryptor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SkillFactorySpringApplication {
@@ -22,6 +24,13 @@ public class SkillFactorySpringApplication {
 
         thread.setDaemon(false);
         thread.start();
+    }
+
+    @Bean
+    BasicTextEncryptor textEncryptor(){
+        BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
+        textEncryptor.setPassword("mySecretEncriptionKeyBlaBla1234");
+        return textEncryptor;
     }
 
 }
