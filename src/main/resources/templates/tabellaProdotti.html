@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,7 +54,7 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
   <div class="row">
     <div class="col">
         <form th:action="@{/prodotti/upsertRed}" method="post">
@@ -71,7 +72,7 @@
           </div>
           <div class="mb-3">
             <label for="prezzo" class="form-label">Prezzo</label>
-            <input type="number" class="form-control" id="prezzo" name="prezzo" min="0" max="10000" step="0.1">
+            <input type="number" class="form-control" id="prezzo" name="prezzo" min="0" max="10000" step="0.01">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>

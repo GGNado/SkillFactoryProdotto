@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pkg.skillfactoryspring.SkillFactorySpringApplication;
 import pkg.skillfactoryspring.database.RepoAccount;
+import pkg.skillfactoryspring.database.RepoRole;
 import pkg.skillfactoryspring.model.Account;
+import pkg.skillfactoryspring.model.Role;
 import pkg.skillfactoryspring.utility.Crittografia;
 
 import java.util.List;
@@ -19,6 +21,9 @@ public class Avvio {
     // che risulta figlia di questa interfaccia iniettando l'oggeto di tipo account
     @Autowired
     RepoAccount repoAccount;
+
+    @Autowired
+    RepoRole role;
 
     @Autowired
     Crittografia cripto;
@@ -34,6 +39,8 @@ public class Avvio {
     @PostMapping("/upsert")
     public String upsert(Account account){
         account.setPassword(cripto.encrypt(account.getPassword()));
+        Role user = role.findById(2);
+        account.setRole(user);
         repoAccount.save(account);
         SkillFactorySpringApplication.restart();
         return "home";

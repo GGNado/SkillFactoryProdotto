@@ -225,6 +225,8 @@ public class ProdottiRouter {
 ## Link Utili
 
 - [Codice](https://github.com/GGNado/SkillFactoryProdotto/tree/main)
-- PowerPoint
+- [PowerPoint](https://www.canva.com/design/DAGCMIKELa0/-egJ-J4ZjvldVcpa-L7L_A/view)
+- [Ciro Chiaramonte](https://www.instagram.com/cirochiaramonte/)
+- [Gervasio Battimelli](https://www.instagram.com/gervasio_b05/)
 - [Luigi Massa](https://www.instagram.com/just.luii_/)
 - Musella

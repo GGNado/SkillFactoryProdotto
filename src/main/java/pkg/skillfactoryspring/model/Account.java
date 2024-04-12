@@ -16,9 +16,15 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Autoincrementa
     private Integer id;
+
     @Column(length = 30, nullable = false, unique = true)
     private String username;
+
     @Column(length = 256, nullable = false)
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name="roles_id", nullable=false)
+    private Role role;
 }
 
