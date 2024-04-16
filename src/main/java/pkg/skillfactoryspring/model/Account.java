@@ -23,8 +23,8 @@ public class Account {
     @Column(length = 256, nullable = false)
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name="roles_id", nullable=false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="roles_id", referencedColumnName = "id")
     private Role role;
 }
 

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -19,6 +20,6 @@ public class Role {
     private Integer id;
     @Column
     private String nome;
-    @OneToMany(mappedBy="role")
-    private Set<Account> accounts;
+    @OneToMany(mappedBy="role", fetch = FetchType.LAZY)
+    private List<Account> accounts;
 }

@@ -21,9 +21,11 @@ public class ProdottiRouter {
     RepoProdotto repoProdotto;
 
     @PostMapping("/upsert")
-    public String upsert(Prodotto prodotto){
+    public String upsert(Prodotto prodotto, Model model){
         repoProdotto.save(prodotto);
-        return "formProdotti";
+        List<Prodotto> prodotti = repoProdotto.findAll();
+        model.addAttribute("prodotti", prodotti);
+        return "tabellaProdotti";
     }
 
     @PostMapping("/upsertRed")

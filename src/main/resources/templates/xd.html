@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <title>Welcome to Code Slate</title>
+</head>
+<body>
+<h2>Welcome</h2>
+
+Authenticated username: <div sec:authentication="name"></div>
+Authenticated user roles: <div sec:authentication="principal.authorities"></div>
+</br></br>
+
+<div sec:authorize="isAuthenticated()">You are successfully authenticated</div>
+<div sec:authorize="hasRole('OPERATOR')">User got Operator role</div>
+<div sec:authorize="hasRole('ADMIN')">User got Admin role</div>
+
+</body>
+</html>

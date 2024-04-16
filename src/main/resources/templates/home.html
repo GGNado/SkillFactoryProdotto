@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="https://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,9 +36,13 @@
 		<div class="col text-center">
 			<h1>Mastering Spring</h1>
 			<p>Gestionale didattico di prodotti con Sign in e Sign up</p>
-			<a href="#" class="btn btn-primary">Learn More</a>
+			<a href="https://github.com/GGNado/SkillFactoryProdotto" target="_blank" class="btn btn-primary">Learn More</a>
 		</div>
 	</div>
+</div>
+
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+	This will only be displayed if authenticated user has role ROLE_ADMIN.
 </div>
 
 
