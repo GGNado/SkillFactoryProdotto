@@ -54,12 +54,12 @@ public class WebSecurityConfig {
             //Vengono caricati tutti gli utenti registrati per
             //autorizzarli all'accesso
             UserDetails user = User.withDefaultPasswordEncoder()
-                    .username(u.getUsername())
+                    .username(u.getEmail())
                     .password(cripto.decrypt(u.getPassword()))
                     .roles(u.getRole().getNome())
                     .build();
             usersAuth.add(user);
-            System.out.println(user.getUsername() + " " + user.getAuthorities());
+            System.out.println(user.getUsername() + " " + user.getAuthorities() + " " + cripto.decrypt(u.getPassword()));
         }
 
         return new InMemoryUserDetailsManager(usersAuth);

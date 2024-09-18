@@ -18,7 +18,7 @@ public class Account {
     private Integer id;
 
     @Column(length = 30, nullable = false, unique = true)
-    private String username;
+    private String email;
 
     @Column(length = 256, nullable = false)
     private String password;

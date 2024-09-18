@@ -30,7 +30,7 @@ public class Avvio {
 
     @PostMapping("/takeValues")
     public String takeValues(Account account){
-        System.out.println(account.getUsername());
+        System.out.println(account.getEmail());
         System.out.println(account.getPassword());
 
         return "form";

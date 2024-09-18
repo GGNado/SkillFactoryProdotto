@@ -24,7 +24,7 @@ public class CheckRecords {
         System.out.println("Controllo in corso...");
         if (repoAccount.findAll().isEmpty()){
             Account account = new Account();
-            account.setUsername("root");
+            account.setEmail("root");
             account.setPassword(cripto.encrypt("root"));
             account.setRole(role);
             System.out.println("Aggiungo account di default...");
